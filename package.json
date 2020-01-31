@@ -1,0 +1,22 @@
+{
+  "name": "robo-annotator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prnysarker/Robo-Annotator.git"
+  },
+  "keywords": [
+    "ImageAnnotator"
+  ],
+  "author": "Pranoy Sarkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prnysarker/Robo-Annotator/issues"
+  },
+  "homepage": "https://github.com/prnysarker/Robo-Annotator#readme"
+}
