@@ -1,13 +1,25 @@
 const config = {
-    noOfImage: 100,
-    noOfElementMovePerImage: 5,
-    imageWidth: 800,
-    imageHeight: 600,
+    noOfImage: 10,// total no of image to be generated are the end
+    noOfElementMovePerImage: 5, // minimum number of images (input)  to be moved in the output image 
+    imageWidth: 800, // width of teh output image 
+    imageHeight: 600, // height of the op image
+    skew: false, // if skew is true the ratio of the input image will be distort  
+
     images: [
+        /*
+            Input Images: make sure the background is (white)#FFF or else remove the background using https://pixlr.com/e or photoshop
+            {
+                url: `./assets/cactus/cactus (1).png`, // path to the image from root dir
+                class: `game-trex-cactus`, // annotation class of the image 
+                minWidth: 20, // during image generation , input image width will be change randomly minWidth &  maxWidth is the range 
+                maxWidth: 100,
+            },
+      */
+
         {
-            url: `./assets/cactus/cactus (1).png`,
-            class: `game-trex-cactus`,
-            minWidth: 20,
+            url: `./assets/cactus/cactus (1).png`, // path to the image from root dir
+            class: `game-trex-cactus`, // annotation class of the image 
+            minWidth: 20, // during image generation , input image width will be change randomly minWidth &  maxWidth is the range 
             maxWidth: 100,
         },
         {
@@ -155,7 +167,7 @@ const config = {
             class: `game-trex-gameover`,
             minWidth: 100,
             maxWidth: 190,
-        }, 
+        },
         {
             url: `assets/gameover/gameover (3).png`,
             class: `game-trex-gameover`,
@@ -183,7 +195,10 @@ const config = {
             maxWidth: 496,
         }
     ],
-    noiseImages:[
+
+    noiseImages: [
+        /*these images are only for noise, these are the things that we are  
+        not interested but in real scenario this things will be present. if you don't want you can keep this empty noiseImages[]*/
         {
             url: `assets/noise/noise1.png`,
             minWidth: 300,

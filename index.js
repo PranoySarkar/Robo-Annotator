@@ -14,7 +14,7 @@ async function init() {
     appendInitialImagesInPlayground(playGround,config.noiseImages,true);
 
     let progress = document.querySelector('progress');
-    progress.max = config.noOfImage;
+    progress.max = config.noOfImage+((config.noOfImage/100)*20);// 20% more, for waiting period 
     progress.value = 0;
 
 
@@ -116,7 +116,7 @@ function isOverFlow(currentMoveAndResizePlane, restMoveAndResizePlane) {
 }
 
 
-init();
+
 
 function generateNewImage() {
     return new Promise(async (resolve, _) => {
@@ -136,19 +136,23 @@ function generateNewImage() {
                 moveAndResizePlane[index].style.top = top + 'px';
                 moveAndResizePlane[index].style.left = left + 'px';
                 moveAndResizePlane[index].style.width = getRandom(moveAndResizePlane[index].dataset.minwidth, moveAndResizePlane[index].dataset.maxwidth) + 'px';
-                let probability = getRandom(1, 10);
-                if (probability < 5) {
-                    let scaleX = scaleY = 1;
-                    if (probability < 3) {
-                        scaleX = getRandom(10, 200) / 100
+                
+                if(config.skew){
+                    let probability = getRandom(1, 10);
+                    if (probability < 5) {
+                        let scaleX = scaleY = 1;
+                        if (probability < 3) {
+                            scaleX = getRandom(10, 200) / 100
+                        } else {
+                            scaleY = getRandom(10, 120) / 100
+                        }
+    
+    
+                        moveAndResizePlane[index].style.transform = `scale(${scaleX},${scaleY})`
                     } else {
-                        scaleY = getRandom(10, 120) / 100
+                        moveAndResizePlane[index].style.transform = `scale(1,1)`
                     }
-
-
-                    moveAndResizePlane[index].style.transform = `scale(${scaleX},${scaleY})`
-                } else {
-                    moveAndResizePlane[index].style.transform = `scale(1,1)`
+    
                 }
 
                 let restMoveAndResizePlane = moveAndResizePlane.filter(each => each == moveAndResizePlane[index] ? false : true)
@@ -229,6 +233,7 @@ document.querySelector(`#genAndDownloadBtn`).addEventListener('click', async (ev
     if (!haltImageGeneration) {
         let zipFile = await zip.generateAsync({ type: "blob" });
         saveAs(zipFile, `image-bundle-${config.noOfImage}.zip`);
+        progress.value=config.noOfImage+((config.noOfImage/100)*20);
     }
     stopButton.disabled = true;
     event.target.disabled = false;
@@ -241,3 +246,7 @@ function isInsidePlayground(currentElementRect) {
         && currentElementRect.top > playgroundRect.top
         && currentElementRect.left > playgroundRect.left;
 }
+
+
+window.addEventListener('load',init);
+window.addEventListener('resize',init);
