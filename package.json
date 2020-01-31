@@ -1,7 +1,7 @@
 {
   "name": "robo-annotator",
   "version": "1.0.0",
-  "description": "",
+  "description": "An automatic image annotation tool. This can generate a lot of artificial images with labeled data from a small  set of images. compatible with labelimg",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -5,7 +5,7 @@ const config = {
     imageHeight: 600,
     images: [
         {
-            url: `assets/cactus/cactus (1).png`,
+            url: `./assets/cactus/cactus (1).png`,
             class: `game-trex-cactus`,
             minWidth: 20,
             maxWidth: 100,
