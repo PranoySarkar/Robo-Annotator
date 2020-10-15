@@ -2,7 +2,7 @@
 An automatic image annotation tool. This can generate a lot of artificial images with labeled data from a small  set of images. compatible with labelimg
 
 
-#[DEMO](https://prnysarker.github.io/Robo-Annotator/)
+# [DEMO](https://prnysarker.github.io/Robo-Annotator/)
 
 **To run locally **
 1. Install Node.js
